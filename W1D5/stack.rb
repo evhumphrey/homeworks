@@ -5,6 +5,7 @@ class Stack
 
   def add(el)
     @stack.push(el)
+    el
   end
 
   def remove

@@ -4,6 +4,8 @@ class Queue
   end
 
   def enqueue(el)
+    @queue.push(el)
+    el
   end
 
   def dequeue

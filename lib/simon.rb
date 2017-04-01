@@ -46,11 +46,11 @@ class Simon
   end
 
   def round_success_message
-
+    puts "Simon praises your guessing abilities."
   end
 
   def game_over_message
-
+    puts "Simon knew you couldn't remember it. Game over."
   end
 
   def reset_game

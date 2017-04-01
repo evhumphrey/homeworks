@@ -1,9 +1,12 @@
+require 'colorize'
+
 class Simon
   COLORS = %w(red blue green yellow).freeze
   DIFFICULTIES = ["hard", "medium", "easy"]
   HARD = 0.5
   MEDIUM = 1
   EASY = 2
+  TIME_BETWEEN_TURNS = 1.7
 
   attr_accessor :sequence_length, :game_over, :seq
 
@@ -43,7 +46,7 @@ class Simon
     seq.each do |color|
       puts "Simon says: "
       sleep(0.1) # brief gap between simon saying colors
-      puts "  #{color}"
+      puts "  #{color}".colorize(color.to_sym)
       sleep(@difficulty)
       system("clear")
     end
@@ -61,13 +64,22 @@ class Simon
   end
 
   def round_success_message
+    system("clear")
     puts "Simon praises your guessing abilities. Get ready."
-    sleep(EASY)
+    sleep(TIME_BETWEEN_TURNS)
   end
 
   def game_over_message
-    puts "Simon knew you couldn't remember it."
-    puts "You guessed #{sequence_length} colors correctly. Game over"
+    system("clear")
+    puts "Simon knew you couldn't remember the sequence: "
+    print "  "
+    seq.each.with_index do |color, i|
+      print color.colorize(color.to_sym)
+      print ", " unless i == (sequence_length - 1)
+    end
+    puts
+    
+    puts "You guessed #{sequence_length} colors correctly. Game over."
     puts "Would you like to play again? (y/n)"
     print "> "
   end

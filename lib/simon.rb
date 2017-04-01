@@ -51,11 +51,37 @@ class Simon
 
   def game_over_message
     puts "Simon knew you couldn't remember it. Game over."
+    puts "Would you like to play again? (y/n)"
+    print "> "
   end
 
   def reset_game
-    @sequence_length = 1
-    @game_over = false
-    @seq = []
+    reset = handle_reset_choice
+
+    if reset
+      @sequence_length = 1
+      @game_over = false
+      @seq = []
+      play
+    end
+  end
+
+  private
+
+  def handle_reset_choice
+    user_choice = gets.chomp
+    valid_commands = ["y", "n"]
+
+    until valid_commands.include?(user_choice.downcase)
+      puts "Please enter y or n"
+      print "> "
+      user_choice = gets.chomp
+    end
+
+    reset?(user_choice.downcase)
+  end
+
+  def reset?(command)
+    command == "y" ? true : false
   end
 end

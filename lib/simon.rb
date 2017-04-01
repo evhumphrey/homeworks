@@ -1,5 +1,6 @@
 class Simon
   COLORS = %w(red blue green yellow)
+  DIFFICULTY = 2
 
   attr_accessor :sequence_length, :game_over, :seq
 
@@ -10,15 +11,19 @@ class Simon
   end
 
   def play
+    wait_for_user_ready
     take_turn
+
     until game_over
       take_turn
     end
+
     game_over_message
     reset_game
   end
 
   def take_turn
+    system("clear")
     show_sequence
     guess = require_sequence
     @game_over = true unless guess == seq.last
@@ -30,13 +35,15 @@ class Simon
   end
 
   def show_sequence
-    print "Simon says: "
+    puts "Simon says: "
     add_random_color
-    puts seq.last
+    puts "  #{seq.last}"
+    sleep(DIFFICULTY)
   end
 
   def require_sequence
-    puts "What did simon say?"
+    system("clear")
+    puts "What did Simon say?"
     print "> "
     gets.chomp
   end
@@ -47,6 +54,7 @@ class Simon
 
   def round_success_message
     puts "Simon praises your guessing abilities."
+    sleep(DIFFICULTY)
   end
 
   def game_over_message
@@ -64,6 +72,27 @@ class Simon
       @seq = []
       play
     end
+  end
+
+  def welcome_message
+    puts "Welcome to Simon Says"
+  end
+
+  def wait_for_user_ready
+    render_welcome_screen
+
+    command = gets.chomp.downcase
+    until command == "c"
+      render_welcome_screen
+      command = gets.chomp.downcase
+    end
+  end
+
+  def render_welcome_screen
+    system("clear")
+    welcome_message
+    puts "When ready to play, type c"
+    print "> "
   end
 
   private

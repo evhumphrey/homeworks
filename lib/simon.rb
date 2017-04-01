@@ -20,7 +20,9 @@ class Simon
 
   def take_turn
     show_sequence
-    require_sequence
+    guess = require_sequence
+    @game_over = true unless guess == seq.last
+
     unless game_over
       round_success_message
       @sequence_length += 1
@@ -28,11 +30,15 @@ class Simon
   end
 
   def show_sequence
+    print "Simon says: "
     add_random_color
+    puts seq.last
   end
 
   def require_sequence
-
+    puts "What did simon say?"
+    print "> "
+    gets.chomp
   end
 
   def add_random_color

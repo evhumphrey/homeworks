@@ -35,10 +35,13 @@ class Simon
   end
 
   def show_sequence
-    puts "Simon says: "
     add_random_color
-    puts "  #{seq.last}"
-    sleep(DIFFICULTY)
+    seq.each do |color|
+      puts "Simon says: "
+      puts "  #{color}"
+      sleep(DIFFICULTY)
+      system("clear")
+    end
   end
 
   def require_sequence

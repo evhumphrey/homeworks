@@ -1,6 +1,5 @@
 class Simon
-  COLORS = %w(red blue green yellow)
-  DIFFICULTY = 2
+  COLORS = %w(red blue green yellow).freeze
 
   attr_accessor :sequence_length, :game_over, :seq
 
@@ -8,6 +7,7 @@ class Simon
     @sequence_length = 1
     @game_over = false
     @seq = []
+    @difficulty = 2
   end
 
   def play
@@ -38,8 +38,9 @@ class Simon
     add_random_color
     seq.each do |color|
       puts "Simon says: "
+      sleep(0.1) # brief gap between simon saying colors
       puts "  #{color}"
-      sleep(DIFFICULTY)
+      sleep(@dificulty)
       system("clear")
     end
   end
@@ -57,11 +58,12 @@ class Simon
 
   def round_success_message
     puts "Simon praises your guessing abilities."
-    sleep(DIFFICULTY)
+    sleep(@dificulty)
   end
 
   def game_over_message
-    puts "Simon knew you couldn't remember it. Game over."
+    puts "Simon knew you couldn't remember it."
+    puts "You guessed #{sequence_length} colors correctly. Game over"
     puts "Would you like to play again? (y/n)"
     print "> "
   end

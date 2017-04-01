@@ -26,7 +26,7 @@ class Simon
     system("clear")
     show_sequence
     guess = require_sequence
-    @game_over = true unless guess == seq.last
+    @game_over = true unless is_correct?(guess)
 
     unless game_over
       round_success_message
@@ -46,9 +46,9 @@ class Simon
 
   def require_sequence
     system("clear")
-    puts "What did Simon say?"
+    puts "What did Simon say? (Enter colors separated by commas)"
     print "> "
-    gets.chomp
+    gets.chomp.split(',').map(&:strip)
   end
 
   def add_random_color
@@ -96,6 +96,10 @@ class Simon
     welcome_message
     puts "When ready to play, type c"
     print "> "
+  end
+
+  def is_correct?(array)
+    array == seq
   end
 
   private

@@ -1,5 +1,9 @@
 class Simon
   COLORS = %w(red blue green yellow).freeze
+  DIFFICULTIES = ["hard", "medium", "easy"]
+  HARD = 0.5
+  MEDIUM = 1
+  EASY = 2
 
   attr_accessor :sequence_length, :game_over, :seq
 
@@ -7,7 +11,7 @@ class Simon
     @sequence_length = 1
     @game_over = false
     @seq = []
-    @difficulty = 2
+    @difficulty = MEDIUM
   end
 
   def play
@@ -40,7 +44,7 @@ class Simon
       puts "Simon says: "
       sleep(0.1) # brief gap between simon saying colors
       puts "  #{color}"
-      sleep(@dificulty)
+      sleep(@difficulty)
       system("clear")
     end
   end
@@ -57,8 +61,8 @@ class Simon
   end
 
   def round_success_message
-    puts "Simon praises your guessing abilities."
-    sleep(@dificulty)
+    puts "Simon praises your guessing abilities. Get ready."
+    sleep(EASY)
   end
 
   def game_over_message
@@ -77,6 +81,8 @@ class Simon
       @seq = []
       play
     end
+
+    system("clear")
   end
 
   def welcome_message
@@ -86,17 +92,23 @@ class Simon
   def wait_for_user_ready
     render_welcome_screen
 
-    command = gets.chomp.downcase
-    until command == "c"
+    command = gets.chomp
+    valid_difficulty = DIFFICULTIES.include?(command.downcase)
+
+    until valid_difficulty
       render_welcome_screen
-      command = gets.chomp.downcase
+      command = gets.chomp
+      valid_difficulty = DIFFICULTIES.include?(command.downcase)
     end
+
+    set_difficulty(command)
   end
 
   def render_welcome_screen
     system("clear")
     welcome_message
-    puts "When ready to play, type c"
+    puts "When ready to play, enter desired difficulty"
+    puts "Difficulty can be easy, medium, or hard"
     print "> "
   end
 
@@ -105,6 +117,17 @@ class Simon
   end
 
   private
+
+  def set_difficulty(word)
+    case word
+    when "hard"
+      @difficulty = HARD
+    when "medium"
+      @difficulty = MEDIUM
+    when "easy"
+      @difficulty = EASY
+    end
+  end
 
   def handle_reset_choice
     user_choice = gets.chomp

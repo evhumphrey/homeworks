@@ -79,5 +79,16 @@ class Board
   end
 
   def winner
+    player1_score = @cups[6].count
+    player2_score = @cups[13].count
+
+    case player1_score <=> player2_score
+    when -1
+      @name2
+    when 1
+      @name1
+    when 0
+      :draw
+    end
   end
 end

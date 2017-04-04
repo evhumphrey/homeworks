@@ -28,8 +28,6 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
-    #tranpose positions 1 - 6 to 0 - 5
-    # cup_idx = start_pos.between?(1, 6) ? start_pos - 1 : start_pos
 
     hand_of_stones = @cups[start_pos].dup
     @cups[start_pos].clear
@@ -71,6 +69,13 @@ class Board
   end
 
   def one_side_empty?
+    empty = Proc.new { |arr| arr.empty? }
+
+    if @cups[0..5].all?(&empty) || @cups[7..12].all?(&empty)
+      true
+    else
+      false
+    end
   end
 
   def winner

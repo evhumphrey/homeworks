@@ -29,12 +29,12 @@ class Mancala
 
         begin
           start_pos = current_player.prompt
-          start_pos -= 1 if start_pos <= 6
           @board.valid_move?(start_pos)
         rescue Exception => e
           puts e.message
         retry
         end
+        start_pos -= 1 if start_pos <= 6
         move_result = @board.make_move(start_pos, current_player.name)
       else
         move_result = @board.make_move(move_result, current_player.name)
@@ -62,3 +62,6 @@ class Mancala
     puts " 1   2   3   4   5   6"
   end
 end
+
+game = Mancala.new("Er", "jm")
+game.play

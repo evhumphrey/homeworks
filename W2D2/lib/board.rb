@@ -1,3 +1,4 @@
+require 'byebug'
 class Board
   attr_accessor :cups
 
@@ -27,10 +28,38 @@ class Board
   end
 
   def make_move(start_pos, current_player_name)
+    #tranpose positions 1 - 6 to 0 - 5
+    # cup_idx = start_pos.between?(1, 6) ? start_pos - 1 : start_pos
+
+    hand_of_stones = @cups[start_pos].dup
+    @cups[start_pos].clear
+
+    cup_idx = start_pos
+    until hand_of_stones.empty?
+      cup_idx = (cup_idx + 1) % 14
+
+      if current_player_name == @name1 && cup_idx == 13
+        next
+      elsif current_player_name == @name2 && cup_idx == 6
+        next
+      end
+
+      @cups[cup_idx] << hand_of_stones.pop
+    end
+
+    render
+    next_turn(cup_idx)
   end
 
   def next_turn(ending_cup_idx)
-    # helper method to determine what #make_move returns
+
+    if ending_cup_idx == 6 || ending_cup_idx == 13
+      :prompt
+    elsif @cups[ending_cup_idx].length > 1
+      ending_cup_idx
+    else
+      :switch
+    end
   end
 
   def render

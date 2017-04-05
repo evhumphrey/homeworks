@@ -35,7 +35,16 @@ describe Dessert do
   end
 
   describe "#mix!" do
-    it "shuffles the ingredient array"
+    it "shuffles the ingredient array" do
+      dessert.add_ingredient("chocolate")
+      dessert.add_ingredient("vanilla")
+      dessert.add_ingredient("flour")
+      dessert.add_ingredient("sugar")
+      dessert.add_ingredient("egg")
+      pre_mix = dessert.ingredients.dup
+      dessert.mix!
+      expect(pre_mix).to_not eq(dessert.ingredients)
+    end
   end
 
   describe "#eat" do

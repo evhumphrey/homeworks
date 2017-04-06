@@ -1,0 +1,2 @@
+class DominantOctopus < BigOctopus
+end

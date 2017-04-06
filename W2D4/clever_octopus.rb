@@ -1,0 +1,2 @@
+class CleverOctopus < BigOctopus
+end

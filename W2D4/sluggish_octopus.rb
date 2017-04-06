@@ -1,0 +1,2 @@
+class SluggishOctopus < BigOctopus
+end

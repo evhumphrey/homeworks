@@ -65,11 +65,25 @@ class DominantOctopus < BigOctopus
 end
 
 class CleverOctopus < BigOctopus
+
+  # O(n)
+  def find_longest_fish
+    longest = ""
+    FISH.each do |fish|
+      longest = fish.size > longest.size ? fish : longest
+    end
+
+    longest
+  end
 end
 
 if $PROGRAM_NAME == __FILE__
   sluggish = SluggishOctopus.new
   dominant = DominantOctopus.new
+  clever = CleverOctopus.new
+  
+  # these will all print same fish
   p "SLUGGISH: #{sluggish.find_longest_fish}"
   p "DOMINANT: #{dominant.find_longest_fish}"
+  p "CLEVER: #{clever.find_longest_fish}"
 end

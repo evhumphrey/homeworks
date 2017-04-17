@@ -5,11 +5,18 @@ class BooksController < ApplicationController
   end
 
   def new
-    # your code here
+    # works without this for some reason???
+    # render :new
   end
 
   def create
-    # your code here
+    book = Book.new(book_params)
+    if book.save
+      redirect_to books_url
+    else
+      flash.now[:errors] = book.errors.full_messages
+      render :new
+    end
   end
 
   def destroy

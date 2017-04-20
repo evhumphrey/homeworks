@@ -1,0 +1,11 @@
+<!-- app/views/user_mailer/welcome_email.html.erb -->
+
+<h1>Welcome to CAT WORLD, <%= @user.username %></h1>
+<p>
+  You have successfully signed up to CAT WORLD,
+  your username is: <%= @user.username %>.<br/>
+</p>
+<p>
+  To login to the site, just follow this link: <a href="<%= @url %>"><%= @url %></a>.
+</p>
+<p>Thanks for joining and have a great day!</p>

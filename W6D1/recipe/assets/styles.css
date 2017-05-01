@@ -47,3 +47,28 @@ ul li a {
 .user_review p:nth-child(4) {
   font-size: 14px;
 }
+
+input[type="radio"], select, input[type="submit"] {
+  cursor: pointer;
+  outline: none;
+}
+
+form input:last-child {
+  background-color: gold;
+}
+
+form input:last-child:hover {
+  background-color: #decb63;
+}
+
+ol li:nth-child(2n) {
+  background-color: lightgray;
+}
+
+ol li:nth-child(2n - 1) {
+  background-color: aliceblue;
+}
+
+h2 + .user_review {
+  border-top: 1px solid black;
+}

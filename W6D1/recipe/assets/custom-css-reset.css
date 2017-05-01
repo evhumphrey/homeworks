@@ -1,0 +1,13 @@
+html, body, header, nav, aside, ul, ol, li, section, figure, img, h1, h2, figcaption, label, footer {
+  margin: 0;
+  padding: 0;
+  border: 0;
+
+  font: inherit;
+
+}
+
+body {
+  font-family: sans-serif;
+  line-height: 1.5;
+}

@@ -22,7 +22,6 @@
 
     <header>
       <img src="https://pbs.twimg.com/profile_images/378800000699275845/28983bbc0ac0a12cde1c0dc3fc818b4b.png" alt="App Academy Logo">
-      <h1>Guacamole</h1>
 
       <nav>
         <ul>
@@ -49,6 +48,7 @@
     </aside>
 
     <section>
+      <h1>Guacamole</h1>
       <figure>
         <img src="http://assets.simplyrecipes.com/wp-content/uploads/2009/05/guacamole-520-b.jpg" alt="image of guacamole" />
       </figure>
@@ -66,40 +66,37 @@
           <li>Add salt, lime juice, and the rest</li>
           <li>Cover with plastic and chill to store</li>
       </ol>
-    </section>
 
-    <section id="reviews">
-      <h2>Review</h2>
-      <form id="review-form" action="/reviews" method="post">
-        <label for="reviewer_name">Your name: </label>
-        <input id="review_name" type="text" name="name">
-        <br><br>
 
-        <label for="rating">Rating: </label>
-        1<input type="radio" name="rating" value="1" checked>
-        2<input type="radio" name="rating" value="2">
-        3<input type="radio" name="rating" value="3">
-        4<input type="radio" name="rating" value="4">
-        5<input type="radio" name="rating" value="5">
-        <br><br>
+      <section id="reviews">
+        <h2>Reviews</h2>
+        <form id="review-form" action="/reviews" method="post">
+          <label for="reviewer_name">Your name: </label>
+          <input id="review_name" type="text" name="name">
 
-        <label for="expertise">Cooking Expertise: </label>
-        <select id="expertise" name="expertise">
-          <option selected disabled>Select Cooking Expertise</option>
-          <option value="Sometime Cook">Sometimes Cook</option>
-          <option value="Cook Everyday">Cook Everyday</option>
-          <option value="Cooking is a Hobby">Cooking is a Hobby</option>
-          <option value="Professional Chef">Professional Chef</option>
-        </select>
-        <br><br>
+          <!-- <label for="rating">Rating: </label> -->
+          1<input type="radio" name="rating" value="1" checked>
+          2<input type="radio" name="rating" value="2">
+          3<input type="radio" name="rating" value="3">
+          4<input type="radio" name="rating" value="4">
+          5<input type="radio" name="rating" value="5">
 
-        <label>Review:
-          <textarea name="review" cols="30" rows="10"></textarea>
-        </label>
-        <br><br>
+          <!-- <label for="expertise">Cooking Expertise: </label> -->
+          <select id="expertise" name="expertise">
+            <option selected disabled>Select Cooking Expertise</option>
+            <option value="Sometime Cook">Sometimes Cook</option>
+            <option value="Cook Everyday">Cook Everyday</option>
+            <option value="Cooking is a Hobby">Cooking is a Hobby</option>
+            <option value="Professional Chef">Professional Chef</option>
+          </select>
 
-        <input type="submit" value="Submit Review">
-      </form>
+
+            <textarea name="review" cols="30" rows="10"></textarea>
+
+
+          <input type="submit" value="Submit Review">
+        </form>
+      </section>
     </section>
 
     <footer>

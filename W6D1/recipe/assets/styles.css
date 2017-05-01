@@ -1,0 +1,49 @@
+body {
+  font-family: Arial, sans-serif;
+  background-color: #ccdebf
+}
+
+h1 {
+  font-size: 38px;
+}
+
+h2 {
+  font-size: 32px;
+}
+
+.ingredients-list {
+  list-style: square inside;
+}
+
+ol {
+  list-style: lower-greek inside;
+}
+
+header > img {
+  width: 100px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.user_review {
+  border: 1px solid #4CAF50;
+  padding: 10px;
+  margin: 4px 0 4px 0;
+  background-color: aliceblue;
+}
+
+.user_review h4 {
+  font-size: 22px;
+  font-weight: bold
+}
+
+.user_review p:nth-child(-n+3) {
+  font-size: 16px;
+}
+
+.user_review p:nth-child(4) {
+  font-size: 14px;
+}
